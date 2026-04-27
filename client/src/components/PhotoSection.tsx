@@ -61,7 +61,7 @@ export default function PhotoSection() {
             {/* Photo container with image */}
             <div className="absolute inset-1 rounded-3xl bg-white overflow-hidden">
               <img
-                src="/images/our-photo.jpg"
+                src="images/our-photo.jpg"
                 alt="صورتنا الجميلة"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
