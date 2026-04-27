@@ -27,7 +27,9 @@ export default function HeroSection() {
 
   const handleOpenMessage = () => {
     const messageSection = document.getElementById('message-section');
-    messageSection?.scrollIntoView({ behavior: 'smooth' });
+    if (messageSection) {
+      messageSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -55,17 +57,18 @@ export default function HeroSection() {
         </div>
 
         {/* Subheading */}
-        <p className="text-xl md:text-2xl text-pink-500 font-light mb-12" style={{ animation: 'slideUp 1s ease-out 3s both' }}>
+        <p className="text-xl md:text-2xl text-pink-500 font-light mb-12" style={{ animation: 'slideUp 1s ease-out 2s both' }}>
           {subText}
         </p>
 
         {/* Main button */}
-        <div className="relative inline-block" style={{ animation: 'slideUp 1s ease-out 3.5s both' }}>
+        <div className="relative inline-block" style={{ animation: 'slideUp 1s ease-out 2.5s both' }}>
           <Button
             onClick={handleOpenMessage}
-            className="relative px-8 py-6 text-lg md:text-xl bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-full font-semibold shadow-2xl hover:shadow-pink-300/50 transition-all duration-300 animate-pulse"
+            className="relative px-8 py-6 text-lg md:text-xl bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-full font-semibold shadow-2xl hover:shadow-pink-300/50 transition-all duration-300"
+            style={{ animation: 'buttonGlow 2s ease-in-out infinite' }}
           >
-            افتح الرسالة ❤️
+            شوف الرسالة ❤️
           </Button>
           
           {/* Glow effect around button */}
@@ -73,9 +76,9 @@ export default function HeroSection() {
         </div>
 
         {/* Floating hearts around button */}
-        <div className="absolute top-0 left-1/4 text-pink-300 text-2xl animate-float" style={{ animationDelay: '0s' }}>💖</div>
-        <div className="absolute top-10 right-1/4 text-pink-300 text-2xl animate-float" style={{ animationDelay: '0.5s' }}>💖</div>
-        <div className="absolute bottom-10 left-1/3 text-pink-300 text-2xl animate-float" style={{ animationDelay: '1s' }}>💖</div>
+        <div className="absolute -top-16 left-1/4 text-pink-300 text-2xl" style={{ animation: 'floatSmall 3s ease-in-out infinite', animationDelay: '0s' }}>💖</div>
+        <div className="absolute -top-12 right-1/4 text-pink-300 text-2xl" style={{ animation: 'floatSmall 3s ease-in-out infinite', animationDelay: '0.5s' }}>💖</div>
+        <div className="absolute top-20 left-1/3 text-pink-300 text-2xl" style={{ animation: 'floatSmall 3s ease-in-out infinite', animationDelay: '1s' }}>💖</div>
       </div>
 
       {/* Scroll indicator */}
@@ -95,23 +98,25 @@ export default function HeroSection() {
           }
         }
         
-        @keyframes float {
+        @keyframes floatSmall {
           0%, 100% {
             transform: translateY(0px) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
+            opacity: 0.6;
           }
           50% {
-            transform: translateY(-30px) rotate(10deg);
+            transform: translateY(-15px) rotate(5deg);
+            opacity: 0.8;
           }
-          90% {
-            opacity: 1;
+        }
+        
+        @keyframes buttonGlow {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
           }
-          100% {
-            transform: translateY(-60px) rotate(20deg);
-            opacity: 0;
+          50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
           }
         }
         
@@ -120,7 +125,7 @@ export default function HeroSection() {
         }
         
         .animate-float {
-          animation: float 4s ease-in-out infinite;
+          animation: floatSmall 3s ease-in-out infinite;
         }
       `}</style>
     </section>

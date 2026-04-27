@@ -3,14 +3,18 @@
  * Design: Continuously floating hearts in background
  * Features: Random positioning, smooth animation
  */
+import { useMemo } from 'react';
+
 export default function FloatingHearts() {
-  const hearts = Array.from({ length: 8 }, (_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: 8 + Math.random() * 4,
-    size: 16 + Math.random() * 24
-  }));
+  const hearts = useMemo(() => 
+    Array.from({ length: 5 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 2,
+      duration: 6 + Math.random() * 3,
+      size: 18 + Math.random() * 16
+    })), []
+  );
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
@@ -37,14 +41,14 @@ export default function FloatingHearts() {
             transform: translateY(0) rotate(0deg);
             opacity: 0;
           }
-          10% {
-            opacity: 0.4;
+          5% {
+            opacity: 0.35;
           }
-          90% {
-            opacity: 0.4;
+          95% {
+            opacity: 0.35;
           }
           100% {
-            transform: translateY(100vh) rotate(360deg);
+            transform: translateY(100vh) rotate(180deg);
             opacity: 0;
           }
         }
